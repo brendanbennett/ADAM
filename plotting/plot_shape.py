@@ -158,26 +158,42 @@ def plot_animate(output_dir, paramfile=None, delay=0.4):
     label_actor = plotter.add_text("", position="upper_left", font_size=11, color="white")
     plotter.show(auto_close=False, interactive_update=True)
 
-    for path in files:
-        iteration = os.path.splitext(path)[1].lstrip(".")
-        label = f"Iteration {iteration}" if iteration.isdigit() else "Final"
-        text = (f"{label}   β = {pole[0]:.2f}°  λ = {pole[1]:.2f}°  P = {pole[2]:.5f} h"
-                if pole else label)
+    def window_closed():
+        return plotter.iren.interactor.GetDone()
 
-        new_verts, _ = read_shape(path)
+    def wait_interactable(seconds):
+        """Sleep for `seconds` while keeping the VTK event loop alive."""
+        end = time.time() + seconds
+        while time.time() < end:
+            plotter.iren.process_events()
+            if window_closed():
+                sys.exit(0)
+            time.sleep(0.016)  # ~60 fps event polling
 
-        # Update vertex positions in-place — preserves camera and avoids actor churn
-        mesh.points = new_verts
-        mesh["Mean_Curvature"] = mesh.curvature("mean")
-        wire_mesh.points = new_verts
+    n = len(files)
+    while True:
+        for i, path in enumerate(files):
+            if window_closed():
+                sys.exit(0)
 
-        plotter.remove_actor(label_actor)
-        label_actor = plotter.add_text(text, position="upper_left",
-                                       font_size=11, color="white")
-        plotter.render()
-        time.sleep(delay)
+            iteration = os.path.splitext(path)[1].lstrip(".")
+            step = f"Iteration {iteration}" if iteration.isdigit() else "Final"
+            frame_counter = f"Frame {i + 1}/{n}  —  {step}"
+            text = (f"{frame_counter}   β = {pole[0]:.2f}°  λ = {pole[1]:.2f}°  P = {pole[2]:.5f} h"
+                    if pole else frame_counter)
 
-    plotter.show(interactive=True)
+            new_verts, _ = read_shape(path)
+
+            # Update vertex positions in-place — preserves camera and avoids actor churn
+            mesh.points = new_verts
+            mesh["Mean_Curvature"] = mesh.curvature("mean")
+            wire_mesh.points = new_verts
+
+            plotter.remove_actor(label_actor)
+            label_actor = plotter.add_text(text, position="upper_left",
+                                           font_size=11, color="white")
+            plotter.render()
+            wait_interactable(delay)
 
 
 # ---------------------------------------------------------------------------
