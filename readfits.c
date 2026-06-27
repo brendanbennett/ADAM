@@ -1,4 +1,4 @@
-#include"wcstools-3.9.2/libwcs/fitsfile.h"
+#include"vendor/wcstools-3.9.2/libwcs/fitsfile.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>

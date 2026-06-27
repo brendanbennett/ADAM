@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
    
         
     if(argc==1)
-        parse_ini("adam.ini");
+        parse_ini("data/configs/example.ini");
     else
         parse_ini(argv[1]);
    

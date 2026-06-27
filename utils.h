@@ -21,7 +21,7 @@
 #include<cblas.h>
 #include<lapacke.h>
 #endif
-#include"wcstools-3.9.2/libwcs/fitsfile.h"
+#include"vendor/wcstools-3.9.2/libwcs/fitsfile.h"
 void alb_smooth(double *ealb,int nAlbedo,double *albreg,double *dalbreg);
 double Albedo_Term(int *tlist,double *vlist,int nfac,int nvert, double *Alimit,double *Alb,int index,double* dAlbv);
 void albedo_smooth(int *tlist,double *vlist,int nfac,int nvert,double *ealb,double *Alim,double *res,double *drda);

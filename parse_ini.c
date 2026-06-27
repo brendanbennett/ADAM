@@ -1,7 +1,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<string.h>
-#include"iniparser/src/iniparser.h"
+#include"vendor/iniparser/src/iniparser.h"
 #include<math.h>
 #include"structs.h"
 #include"utils.h"

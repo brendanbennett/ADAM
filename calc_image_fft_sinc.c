@@ -1,7 +1,7 @@
 
-#include"Kissfft/tools/kiss_fftndr.h"
-//#include"Kissfft/kiss_fft.h"
-//#include"Kissfft/tools/kiss_fftr.h"
+#include"vendor/Kissfft/tools/kiss_fftndr.h"
+//#include"vendor/Kissfft/kiss_fft.h"
+//#include"vendor/Kissfft/tools/kiss_fftr.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<math.h>

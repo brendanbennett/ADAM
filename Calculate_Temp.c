@@ -1,5 +1,5 @@
 #include"utils.h"
-#include"Kissfft/tools/kiss_fftr.h"
+#include"vendor/Kissfft/tools/kiss_fftr.h"
 #include"matrix_ops.h"
 
 void Calculate_Temp(int *tlist, double *vlist,int nfac,int nvert,double* angles,double* E0,double t0,double Gamma, double A,double R,int N,double *Tres)

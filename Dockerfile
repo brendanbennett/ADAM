@@ -17,10 +17,10 @@ COPY . .
 RUN find . -name "*.o" -delete && find . -name "*.a" -delete
 
 # Build bundled iniparser library
-RUN cd iniparser && make
+RUN cd vendor/iniparser && make
 
 # Build bundled wcstools library
-RUN cd wcstools-3.9.2/libwcs && make
+RUN cd vendor/wcstools-3.9.2/libwcs && make
 
 # Build the adam binary
 RUN make adam
