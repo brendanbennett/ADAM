@@ -202,11 +202,11 @@ def plot_animate(output_dir, paramfile=None, delay=0.4):
 
 def main():
     parser = argparse.ArgumentParser(description="Visualise ADAM shape model output")
-    parser.add_argument("--shapefile", default="output/outshape.txt",
-                        help="Path to shape file (default: output/outshape.txt)")
-    parser.add_argument("--paramfile", default="output/param_1",
-                        help="Path to param file for pole arrow (default: output/param_1)")
-    parser.add_argument("--outputdir", default="output",
+    parser.add_argument("--shapefile", default="data/output/outshape.txt",
+                        help="Path to shape file (default: data/output/outshape.txt)")
+    parser.add_argument("--paramfile", default="data/output/param_1",
+                        help="Path to param file for pole arrow (default: data/output/param_1)")
+    parser.add_argument("--outputdir", default="data/output",
                         help="Directory containing outshape.txt.NNN files")
     parser.add_argument("--animate", action="store_true",
                         help="Step through intermediate shapes")

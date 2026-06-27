@@ -25,4 +25,6 @@ RUN cd vendor/wcstools-3.9.2/libwcs && make
 # Build the adam binary
 RUN make adam
 
+RUN mkdir -p /app/data/output
+
 ENTRYPOINT ["/app/adam"]
