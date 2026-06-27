@@ -4,6 +4,11 @@ Created on Fri Sep 30 11:05:09 2016
 
 @author: matvii
 """
+import numpy as np
+from utils import Read_Shape, read_fits_date, calculate_rotated_frame
+from fits_utils import read_fits_date, calculate_rotated_frame
+from math import pi, isnan
+import sys
 
 def parse_ini(inifile):
     fd=open(inifile,'r')
@@ -86,11 +91,3 @@ def parse_ini(inifile):
         E[j,:]=E[j,:]/dist[j]
         km2arcsec[j]=1/(dist[j]*149597871.0)*180/pi*3600.0
         up[j,:]=calculate_rotated_frame(Filename[j],E[j,:])
-
-                
-            
-    
-    
-    
-    
-            

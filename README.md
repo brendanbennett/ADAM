@@ -32,8 +32,9 @@ docker build -t adam .
 Run with
 
 ```
-docker run --rm -v $(pwd)/output:/app/output adam data/configs/135_oct.ini
+docker run --rm -v $(pwd)/data:/app/data adam data/configs/135_oct.ini
 ```
+You may need to manually create the `data/output` directory.
 
 ## Usage
 ADAM uses ini files to process data. For an example of asteroid Hertha, 135_oct.ini and 135_subdiv.ini (usage: ./adam 135_oct.ini). For all the available config options and short descriptions, see the file Adam.ini.

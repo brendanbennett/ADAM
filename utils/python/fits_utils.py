@@ -4,9 +4,11 @@ Created on Fri Sep 30 10:27:00 2016
 
 @author: matvii
 """
-from math import *
+import numpy as np
+from utils import Ortho_Proj
+from math import atan2, cos, sin
 from astropy.io import fits
-from utils import *
+
 def read_fits_date(fitsfile):
     fi=fits.open(fitsfile)
     date=0
@@ -41,7 +43,6 @@ def calculate_rotated_frame(fitsfile,E):
     fi.close()
     if NOCD==1:
         upr=np.array([0,0.3977,0.9175])
-        angle=0;
         return upr
     sgn=np.sign(CD11*CD22-CD12*CD21)
     if sgn>0:
